@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Staff Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+        crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #e6e7fc;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-family: "Fantasy", Copperplate;
+            color: #531896; /* Purple color */
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-family: "Fantasy", Copperplate;
+            color: #3b82f6;
+            margin-bottom: 20px;
+        }
+
+        .alert {
+            margin: 10px 0;
+        }
+
+        .btn-group {
+            margin-top: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome Home Sweet Home! <span class="badge bg-secondary"></span></h1>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for msg in messages %}
+    <h2 style="color: blue;"><i><strong>{{ msg }}</strong></i></h2>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="alert alert-primary" role="alert">
+        <a href="/staff_view_report" class="alert-link">View Report</a>
+    </div>
+    <div class="alert alert-secondary" role="alert">
+        <a href="/staff_view_my_flights" class="alert-link">View My Flights</a>
+    </div>
+    <div class="alert alert-success" role="alert">
+        <a href="/staff_view_customer_of_flight_init" class="alert-link">View All Customers of a Particular Flight</a>
+    </div>
+    <div class="alert alert-danger" role="alert">
+        <a href="/staff_add_airport" class="alert-link">Add an Airport</a>
+    </div>
+
+
+    <div class="alert alert-warning" role="alert">
+			<a href="/staff_add_airplane" class="alert-link">Add an airplane!</a>
+		</div>
+		<div class="alert alert-info" role="alert">
+			<a href="/staff_create_flight" class="alert-link">Create a flight!</a>
+		</div>
+		<div class="alert alert-success" role="alert">
+			<a href="/staff_change_status" class="alert-link">Change status!</a>
+		</div>
+		<div class="alert alert-dark"role="alert">
+			<a href="/staff_add_agent" class="alert-link">Add new agent!</a>
+		</div>
+		<div class="alert alert-primary" role="alert">
+			<a href="/staff_grant_new_permission" class="alert-link">Grant new permission!</a>
+		</div>
+		<div class="alert alert-success" role="alert">
+			<a href="/staff_view_top_agent" class="alert-link">View top agents!</a>
+		</div>
+		<div class="alert alert-info" role="alert">
+			<a href="/staff_view_most_freq_customer" class="alert-link">View most frequent customer!</a>
+		</div>
+		<div class="alert alert-warning" role="alert">
+			<a href="/staff_view_all_flights_of_customer_init" class="alert-link">View all flights taken by a particular customer!</a>
+		</div>
+		<div class="alert alert-danger" role="alert">
+			<a href="/staff_view_Top_destinations" class="alert-link">View Top destinations!</a>
+		</div>
+		<div class="alert alert-success" role="alert">
+			<a href="/staff_comparison_of_revenue_earned" class="alert-link">View comparison of revenue earned!</a>
+		</div>
+</table>
+
+    <div class="btn-group">
+        <a href="/staff_logout" class="btn btn-outline-dark">Log Out</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

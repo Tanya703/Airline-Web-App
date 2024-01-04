@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>comparison of revenue earned</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+     google.charts.load('current', {'packages':['corechart']});
+     google.charts.setOnLoadCallback(drawChart);
+    
+     function drawChart() {
+    
+
+       var data = google.visualization.arrayToDataTable([
+         ['Revenue', 'Revenue amount'],
+         ["one_month_revenue_direct", {{one_month_revenue_direct['sum(f.price)']}}],
+         ['one_month_revenue_undirect', {{one_month_revenue_undirect['sum(f.price)']}}],
+        ]);
+    
+
+       var options = {
+         title: 'Last Month Revenue Comparision'
+       };
+    
+       var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    
+       chart.draw(data, options);
+     }
+    </script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+     google.charts.load('current', {'packages':['corechart']});
+     google.charts.setOnLoadCallback(drawChart);
+    
+     function drawChart() {
+    
+
+       var data = google.visualization.arrayToDataTable([
+         ['Revenue', 'Revenue amount'],
+         ['one_year_revenue_direct', {{one_year_revenue_direct['sum(f.price)']}}],
+         ['one_year_revenue_undirect', {{one_year_revenue_undirect['sum(f.price)']}}],
+        ]);
+    
+
+       var options = {
+         title: 'Last Year Revenue Comparision'
+       };
+    
+       var chart = new google.visualization.PieChart(document.getElementById('piechartt'));
+    
+       chart.draw(data, options);
+     }
+    </script>
+
+</head>
+<body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <div id="piechartt" style="width: 900px; height: 500px;"></div>
+
+    <br>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <div class="btn-group">
+      <a href="/staff_home" class="btn btn-outline-dark" aria-current="page">back to staff home</a>
+      <a href="/staff_logout" class="btn btn-outline-dark">Log out</a> 
+    </div>
+
+</body>
+</html>"
