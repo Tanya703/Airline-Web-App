@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <style>
+        body {
+            background-color: #f7e9f2;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        p.error {
+            color: red;
+            font-family: "Cursive", Lucida Handwriting;
+            text-align: center;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #531896; /* Purple color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: "Fantasy", Copperplate;
+        }
+
+        a:hover {
+            background-color: #410c5a; /* Darker purple on hover */
+        }
+    </style>
+</head>
+
+<body>
+    {% if error %}
+    <p class="error"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+
+    <a href="/agent_home">Agent Home Page</a>
+</body>
+
+</html>

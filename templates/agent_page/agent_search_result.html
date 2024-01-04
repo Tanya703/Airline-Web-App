@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Agent_flight_search_result">
+    <title>Agent Flight Search Result</title>
+    <style>
+        body {
+            background-color: #f7e9f2;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 10%;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .content {
+            max-width: 800px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: "Cursive", Brush Script MT;
+            color: #531896; /* Purple color */
+        }
+
+        h2 {
+            font-family: "Fantasy", Copperplate;
+            color: #531896; /* Purple color */
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #531896; /* Purple color */
+            color: #fff;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #531896; /* Purple color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: "Fantasy", Copperplate;
+        }
+
+        a:hover {
+            background-color: #410c5a; /* Darker purple on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h2>Agent Search Result</h2>
+        <table border="1">
+            <tr>
+                <!--The title line of flight search-->
+                <th>Flight Number</th>
+                <th>Departure Airport</th>
+                <th>Departure Time</th>
+                <th>Arrival Airport</th>
+                <th>Arrival Time</th>
+                <th>Price</th>
+                <th>Status</th>
+            </tr>
+            {% for result in posts %}
+            <tr>
+                <td>{{result["flight_num"]}}</td>
+                <td>{{result["departure_airport"]}}</td>
+                <td>{{result["departure_time"]}}</td>
+                <td>{{result["arrival_airport"]}}</td>
+                <td>{{result["arrival_time"]}}</td>
+                <td>{{result["price"]}}</td>
+                <td>{{result["status"]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <a href="/agent_flight_search">Back to Search</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Basic Background settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent View Commission</title>
+
+    <style>
+        body {
+            background-color: #f7e9f2;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 10%;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin-top: 50px;
+            padding: 0;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-family: "Cursive", Brush Script MT;
+            color: #531896; /* Purple color */
+        }
+
+        h2, h4 {
+            font-family: "Fantasy", Copperplate;
+            color: #531896; /* Purple color */
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #531896; /* Purple color */
+            color: #fff;
+        }
+
+        p {
+            color: red;
+            font-family: "Cursive", Lucida Handwriting;
+        }
+
+        input {
+            font-family: "Fantasy", Papyrus;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+        a {
+            display: inline-block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #531896; /* Purple color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: "Fantasy", Copperplate;
+        }
+
+        a:hover {
+            background-color: #410c5a; /* Darker purple on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h1>Agent View Commission</h1>
+
+        <h2>Your sales performance in the recent 30 days:</h2>
+        <table>
+            <tr>
+                <!-- The title line of default display -->
+                <th>Total Commission</th>
+                <th>Number of Tickets Sold</th>
+                <th>Average Commission per Ticket</th>
+            </tr>
+
+            <tr>
+                <td>{{commission}}</td>
+                <td>{{num_ticket}}</td>
+                <td>{{average_commission}}</td>
+            </tr>
+        </table>
+        <p>----------------------------------------------------------------------------------------------------------------</p>
+
+        <!-- Form for searching commission given a time period -->
+        <h2>You may also search by specifying date range:</h2>
+
+        <form action='/agent_customize_commission' method='POST'>
+            <p>Start Date</p>
+            <input type="date" name="start_date" required/>
+
+            <p>End Date</p>
+            <input type="date" name="end_date" required/>
+
+            <input type="submit" value="Search">
+        </form>
+
+        <!-- Another view -->
+        {% if num_ticket_c %}
+        <h4>Your customized search result:</h4>
+        <table>
+            <tr>
+                <!-- The title line of default display -->
+                <th>Total Commission</th>
+                <th>Number of Tickets Sold</th>
+                <th>Average Commission per Ticket</th>
+            </tr>
+
+            <tr>
+                <td>{{commission_c}}</td>
+                <td>{{num_ticket_c}}</td>
+                <td>{{average_commission_c}}</td>
+            </tr>
+        </table>
+        {% endif %}
+
+        {% if not num_ticket_c %}
+        <h4>No commission in this date range!</h4>
+        {% endif %}
+
+        {% if error %}
+        <p class="error"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+
+        <br/><br/>
+        <a href="/agent_home">Back to home</a>
+    </div>
+</body>
+
+</html>
