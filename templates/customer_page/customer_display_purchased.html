@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Customer_purchased_record">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+        crossorigin="anonymous">
+
+    <title>Customer Purchased Ticket</title>
+    <style>
+        body {
+            background-color: #e6e7fc;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 13%;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .content {
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            font-family: "Fantasy", Copperplate;
+            color: #531896; /* Purple color */
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #531896; /* Purple color */
+            color: #fff;
+        }
+
+        p {
+            color: red;
+            font-family: "Cursive", Lucida Handwriting;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+        a {
+            display: inline-block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #531896; /* Purple color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: "Fantasy", Copperplate;
+        }
+
+        a:hover {
+            background-color: #410c5a; /* Darker purple on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h2>Your Ticket Purchase Record</h2>
+
+        <table class="table table-striped">
+            <tr>
+                <!-- The title line of flight search -->
+                <th>Flight Number</th>
+                <th>Airline Name</th>
+            </tr>
+
+            {% for result in posts %}
+            <tr>
+                <td>{{result["flight_num"]}}</td>
+                <td>{{result["airline_name"]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        {% if error %}
+        <p class="error"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+
+        <br>
+        <a href="/customer_home">Back to Home</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

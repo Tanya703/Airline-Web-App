@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Customer_home">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+        crossorigin="anonymous">
+
+    <title>Customer Home</title>
+    <style>
+        body {
+            background-color: #e6e7fc;
+            background-repeat: no-repeat;
+            background-attachment: no-fixed;
+            background-size: 100% 13%;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin-top: 20px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .content {
+            max-width: 800px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            font-family: "Arial", sans-serif;
+            color: #007bff; /* Blue color */
+            margin-bottom: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            width: 18rem;
+            margin: 0 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card img {
+            width: 70%; /* Set the width to 100% to make images responsive */
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+margin-top: 20px
+        }
+
+        .card-body {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            font-family: "Cursive", Brush Script MT;
+            color: #531896; /* Purple color */
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #531896; /* Purple color */
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #410c5a; /* Darker purple on hover */
+        }
+
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff; /* Blue color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: "Arial", sans-serif;
+        }
+
+        a:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h2>Welcome back, <span style="color: #007bff;">{{username}}</span>.</h2>
+<div class="card-container">
+        <div class="card" style="width: 18rem;">
+            <img src="../static/search.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Customer Flight Search</h5>
+                <a href="/customer_flight_search" class="btn btn-primary">Search</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img src="../static/plane.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">My Purchased Flight</h5>
+                <a href="/customer_display_purchased" class="btn btn-primary">Display</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img src="../static/purchase.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Purchase a ticket</h5>
+                <a href="/customer_ticket_view" class="btn btn-primary">Purchase</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img src="../static/wallet.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Track my spendings</h5>
+                <a href="/customer_track" class="btn btn-primary">Show</a>
+            </div>
+        </div>
+  </div>
+        <a href="/logout" class="btn btn-primary">Logout</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

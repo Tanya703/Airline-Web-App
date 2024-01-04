@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Spending</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Time', 'Spending amount'],
+                ["Most recent month", {{data3[0]}}],
+                ['2nd recent month', {{data3[1]}}],
+                ['3rd recent month', {{data3[2]}}],
+                ['4th recent month', {{data3[3]}}],
+                ['5th recent month', {{data3[4]}}],
+                ['6th recent month', {{data3[5]}}],
+            ]);
+
+            var options = {
+                title: 'My Spendings',
+                backgroundColor: '#f7f9fc',
+                colors: ['#531896'], // Purple color
+                fontName: 'Arial, sans-serif',
+                titleTextStyle: {
+                    color: '#531896', // Purple color
+                    fontName: 'Cursive, Brush Script MT',
+                    fontSize: 24,
+                },
+                legend: {
+                    textStyle: {
+                        color: '#333',
+                        fontName: 'Fantasy, Copperplate',
+                    },
+                },
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById('barchart'));
+            chart.draw(data, options);
+        }
+    </script>
+    <style>
+        body {
+            background-color: #e6e7fc;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 10%;
+            font-family: 'Arial, sans-serif';
+            color: #333;
+            margin-top: 50px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .content {
+            max-width: 800px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: "Cursive", Brush Script MT;
+            color: #531896; /* Purple color */
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-family: "Fantasy", Copperplate;
+            color: #531896; /* Purple color */
+            margin-top: 20px;
+        }
+
+        h3 {
+            font-family: "Fantasy", Copperplate;
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        span {
+            font-family: "Fantasy", Copperplate;
+            color: #531896; /* Purple color */
+        }
+
+        input[type="date"] {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #531896; /* Purple color */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: "Fantasy", Copperplate;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #410c5a; /* Darker purple on hover */
+        }
+
+        #barchart {
+            width: 100%;
+            max-width: 900px;
+            height: 500px;
+            margin: 20px auto;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #531896; /* Purple color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: "Fantasy", Copperplate;
+        }
+
+        a:hover {
+            background-color: #410c5a; /* Darker purple on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h1>Check Your Spending</h1>
+        <h3>-- Please enter a date range: </h3>
+
+        <form action="/customer_track_my_spending" method="POST">
+            <span>Start Date: </span>
+            <input type="date" name="start_date" required><br><br>
+            <span>End Date: </span>
+            <input type="date" name="end_date" required><br><br>
+            <input type="submit" name='submit'><br><br>
+        </form>
+
+        {% if data1 %}
+        <h2>Your total spending for the past year is $ {{data1["total"]}} </h2>
+        {% endif %}
+
+        {% if data2 %}
+        <h2>Your total spending for the selected period is $ {{data2["total"]}} </h2>
+        {% endif %}
+
+        {% if data3 %}
+        <div id="barchart"></div>
+        {% endif %}
+
+        <br>
+        <a href="/customer_home">Back to Home</a>
+    </div>
+</body>
+
+</html>

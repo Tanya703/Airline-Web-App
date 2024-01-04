@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Customer_ticket_purchase">
+
+    <title>Customer Ticket Purchase</title>
+    <style>
+        body {
+            background-color: #e6e7fc;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 13%;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .content {
+            max-width: 800px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-family: "Arial", sans-serif;
+            color: #3f0178; /* Blue color */
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-family: "Arial", sans-serif;
+            color: #3f0178;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3f0178; /* Blue color */
+            color: #fff;
+        }
+
+        input {
+            font-family: "Arial", sans-serif;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            background-color: #3f0178; /* Blue color */
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1f013b; /* Darker blue on hover */
+        }
+
+        .error {
+            color: #ff0000; /* Red color */
+            margin-top: 10px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #3f0178; /* Blue color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: "Arial", sans-serif;
+        }
+
+        a:hover {
+            background-color: #1f013b; /* Darker blue on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h1>Purchase your ticket</h1>
+        <h2>-- Upcoming flight info</h2>
+        <table>
+            <tr>
+                <!--The title line of flight search-->
+                <th>Flight Number</th>
+                <th>Departure Airport</th>
+                <th>Departure Time</th>
+                <th>Arrival Airport</th>
+                <th>Arrival Time</th>
+                <th>Price</th>
+                <th>Status</th>
+            </tr>
+
+            {% for result in posts %}
+            <tr>
+                <td>{{result["flight_num"]}}</td>
+                <td>{{result["departure_airport"]}}</td>
+                <td>{{result["departure_time"]}}</td>
+                <td>{{result["arrival_airport"]}}</td>
+                <td>{{result["arrival_time"]}}</td>
+                <td>{{result["price"]}}</td>
+                <td>{{result["status"]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        </br>
+
+        <h2>-- Choose ticket</h2>
+
+        <form action="/customer_purchase_ticket" method="post">
+            <div>
+                <p>Enter your email or purchase for your friends</p>
+                <input type="email" name="username" required="required" />
+            </div>
+
+            <div>
+                <p>Enter flight number from shown above</p>
+                <input type="text" name="flight_num" required="required" />
+            </div>
+
+            <div>
+                <input type="submit" value="Purchase" />
+            </div>
+        </form>
+
+        {% if error %}
+        <p class="error"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+
+        <a href="/customer_home">Back to Home</a>
+    </div>
+</body>
+
+</html>
